@@ -24,10 +24,6 @@ const AddFunds: NextPage = () => {
         color_buttons: "#EC407A",
         commodities: JSON.stringify([
             {
-              commodity: "TT",
-              network: "mumbai",
-            },
-            {
               commodity: "MATIC",
               network: "mumbai",
             },

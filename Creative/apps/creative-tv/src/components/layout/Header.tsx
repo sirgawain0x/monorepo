@@ -285,14 +285,14 @@ export function Header({ className, handleLoading }: Props) {
         </DrawerHeader>
         <DrawerBody>
           <p>
-            <Accordion allowToggle px="0px" my={4}>
+            <Accordion allowToggle my={4}>
               <AccordionItem>
                 <AccordionButton>
                   <Button
                     color="black.700"
                     display="inline-flex"
                     alignItems="center"
-                    px="0"
+                    px={0}
                     fontSize="sm"
                     fontWeight={700}
                     _hover={{ color: cl }}
@@ -343,7 +343,7 @@ export function Header({ className, handleLoading }: Props) {
               display="inline-flex"
               alignItems="center"
               fontSize="14px"
-              px="0"
+              px={0}
               my={4}
               fontWeight={700}
               _hover={{ color: cl }}
@@ -367,7 +367,7 @@ export function Header({ className, handleLoading }: Props) {
                     fontWeight={700}
                     _hover={{ color: cl }}
                     _focus={{ boxShadow: 'none' }}>
-                    Community
+                      Community
                     <AccordionIcon display={{ base: 'none', sm: 'none', md: 'block' }} />
                   </Button>
                 </AccordionButton>
@@ -394,8 +394,8 @@ export function Header({ className, handleLoading }: Props) {
                 switchToActiveChain={true}
                 modalSize={"wide"}
                 theme={connector} 
-                btnTitle={'Sign In/Up'}
-                modalTitle={'Login'}
+                btnTitle={'Create'}
+                modalTitle={'Enter Email'}
               />
             ) : (
               <ButtonGroup>
@@ -593,14 +593,10 @@ export function Header({ className, handleLoading }: Props) {
               termsOfServiceUrl="https://creativeplatform.xyz/docs/legal/terms-conditions"
               privacyPolicyUrl="https://creativeplatform.xyz/docs/legal/privacy-policy"
               theme={connector} 
-              btnTitle={'Sign In/Up'}
-              modalTitle={'Login'}
+              btnTitle={'Create'}
+              modalTitle={'Enter Email'}
               switchToActiveChain={true}
               modalSize={"wide"}
-              dropdownPosition={{
-                side: "bottom", // "top" | "bottom" | "left" | "right";
-                align: "end", // "start" | "center" | "end";
-              }} 
               />
             ) : (
               <ButtonGroup>
@@ -613,13 +609,7 @@ export function Header({ className, handleLoading }: Props) {
                 </MenuButton>                
                   {!subscribed ? (
                     <MenuList>
-                      <MenuGroup title='1. Wallet Options'>
-                        <Center>
-                          <AddFunds />
-                        </Center>
-                      </MenuGroup>
-                      <MenuDivider />
-                      <MenuGroup title='2. Creator Access'>
+                      <MenuGroup title='⛔️ Creator Access Only'>
                         <Center>
                           <PurchaseKey />
                         </Center>

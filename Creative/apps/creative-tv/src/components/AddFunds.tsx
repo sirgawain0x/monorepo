@@ -32,6 +32,7 @@ const AddFunds: NextPage = () => {
               network: "mumbai",
             },
           ]),
+        currency_amount: 10,
         listeners: {
         loaded: () => console.log('loaded'),
         },

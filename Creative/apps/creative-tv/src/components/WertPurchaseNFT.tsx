@@ -49,7 +49,7 @@ const WertPurchaseNFT: NextPage = () => {
                     author: "Creative Org DAO",
                     image_url:
                     "https://locksmith.unlock-protocol.com/lock/0x9a9280897C123B165E23f77cf4c58292D6aB378d/icon",
-                    name: "The CREATIVE Membership",
+                    name: "The BETA Membership",
                     seller: "Creative Organization DAO",
                 }
             },

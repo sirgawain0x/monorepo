@@ -2,6 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { signSmartContractData } from '@wert-io/widget-sc-signer';
 import WertWidget from '@wert-io/widget-initializer';
+import type { Options } from '@wert-io/widget-initializer/types';
 import { Button } from '@chakra-ui/react';
 import { MdOutlineShoppingCartCheckout } from 'react-icons/md';
 import { WERT_PRIVATE_KEY, CREATIVE_ADDRESS, LOCK_ADDRESS_MUMBAI_TESTNET } from '../utils/config';
@@ -33,12 +34,11 @@ const WertPurchaseNFT: NextPage = () => {
             sc_input_data: data,
         }, `${WERT_PRIVATE_KEY}`);
 
-        const wertOptions = {
+        const wertOptions: Options = {
             partner_id: "01FGKYK638SV618KZHAVEY7P79",
             click_id: uuidv4(),
             origin: "https://sandbox.wert.io",
             color_buttons: "#EC407A",
-            autosize: true,
             lang: 'en',
         }
 
@@ -64,7 +64,7 @@ const WertPurchaseNFT: NextPage = () => {
 
     return (
         <>
-            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => wertWidget.mount()}>Buy with Debit/Credit</Button>
+            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => wertWidget.open()}>Buy with Debit/Credit</Button>
         </>
     )
 }

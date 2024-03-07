@@ -9845,10 +9845,10 @@
   resolved "https://registry.npmjs.org/@wert-io/widget-initializer/-/widget-initializer-3.1.0.tgz"
   integrity sha512-pY5Ws0rL/lhxTAu5fEcLPPqvX9nr+aru3+/3DvypkPAuouBbbpW5xEW0lc9DcWfWsgrpudp0Cpujg5IPRtvjVw==
 
-"@wert-io/widget-initializer@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@wert-io/widget-initializer/-/widget-initializer-4.0.1.tgz"
-  integrity sha512-kW9RAYYpCbxwHS+pmT6aM+K7WFrqCxnvINWR1MHd7KNawntrccv9UrvaEREGKWOU/m6OHkADuV6fZmyOvnNGZQ==
+"@wert-io/widget-initializer@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@wert-io/widget-initializer/-/widget-initializer-6.1.0.tgz#c6b82bdd297c30cacd357097958dee9733c0b1b1"
+  integrity sha512-itC9nAsX6AOWeWmmfZiaD1k3pFpinzIo9Fpl9YxcbRcebs/ViHMmo0W3XGm+kCSaNsno2VWddGlG95KX6fG+LA==
 
 "@wert-io/widget-sc-signer@^2.0.0":
   version "2.0.0"

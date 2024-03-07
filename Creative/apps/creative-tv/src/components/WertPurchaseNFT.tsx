@@ -2,6 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { signSmartContractData } from '@wert-io/widget-sc-signer';
 import WertWidget from '@wert-io/widget-initializer';
+import type { Options } from '@wert-io/widget-initializer/types';
 import { Button } from '@chakra-ui/react';
 import { MdOutlineShoppingCartCheckout } from 'react-icons/md';
 import { WERT_PRIVATE_KEY, CREATIVE_ADDRESS, LOCK_ADDRESS_MUMBAI_TESTNET } from '../utils/config';
@@ -19,7 +20,7 @@ const WertPurchaseNFT: NextPage = () => {
         const data = encodeFunctionData({
             abi: Unlock.abi,
             functionName: 'purchase',
-            args: [[1000000000000000000], [address], [CREATIVE_ADDRESS], [CREATIVE_ADDRESS], ['0x']]
+            args: [[1282000000000000000], [address], [CREATIVE_ADDRESS], [CREATIVE_ADDRESS], ['0x']]
           })
     
 
@@ -28,17 +29,16 @@ const WertPurchaseNFT: NextPage = () => {
             address: address,
             commodity: "MATIC",
             network: "mumbai",
-            commodity_amount: 1,
+            commodity_amount: 1.282,
             sc_address: LOCK_ADDRESS_MUMBAI_TESTNET.address,
             sc_input_data: data,
         }, `${WERT_PRIVATE_KEY}`);
 
-        const wertOptions = {
+        const wertOptions: Options = {
             partner_id: "01FGKYK638SV618KZHAVEY7P79",
             click_id: uuidv4(),
             origin: "https://sandbox.wert.io",
             color_buttons: "#EC407A",
-            autosize: true,
             lang: 'en',
         }
 
@@ -46,9 +46,9 @@ const WertPurchaseNFT: NextPage = () => {
             extra: {
                 item_info: {
                     author_image_url: "https://bafkreiehm3yedt4cmtckelgfwqtgfvp6bolvk5nx2esle4tnwe7mi5q43q.ipfs.nftstorage.link/",
-                    author: "Creative Organization DAO",
+                    author: "Creative Org DAO",
                     image_url:
-                    "https://storage.unlock-protocol.com/e47cb521-03a1-490d-9582-a221029d241f",
+                    "https://locksmith.unlock-protocol.com/lock/0x9a9280897C123B165E23f77cf4c58292D6aB378d/icon",
                     name: "The CREATIVE Membership",
                     seller: "Creative Organization DAO",
                 }
@@ -64,13 +64,13 @@ const WertPurchaseNFT: NextPage = () => {
 
     return (
         <>
-            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => wertWidget.mount()}>Buy with Debit/Credit</Button>
+            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => wertWidget.open()}>Buy with Debit/Credit</Button>
         </>
     )
 }
     return (
         <>
-            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => alert("Connect your wallet to purchase a membership")}>Not Connected</Button>
+            <Button leftIcon={<MdOutlineShoppingCartCheckout />} onClick={() => alert("Enter email to purchase a membership")}>Not Connected</Button>
         </>
     )
 }

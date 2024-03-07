@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import WertWidget from '@wert-io/widget-initializer';
+import { Options } from '@wert-io/widget-initializer/types';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from '@chakra-ui/react';
 import { TbMoneybag } from 'react-icons/tb'
@@ -9,20 +10,19 @@ const Wert: NextPage = () => {
     const address = useAddress() || '';
 
     // WERT OPTIONS
-    const options = {
+    const options: Options = {
         partner_id: "01FGKYK638SV618KZHAVEY7P79",
         origin: "https://sandbox.wert.io",
         currency: 'USD',
         commodity: 'MATIC',
         address: address,
-        autosize: true,
         network: 'matic',
         lang: 'en',
         click_id: uuidv4(),
         color_buttons: "#EC407A",
         commodities: JSON.stringify([
             {
-              commodity: "TTG",
+              commodity: "TT",
               network: "mumbai",
             },
             {
@@ -40,7 +40,7 @@ const Wert: NextPage = () => {
 
     return (
         <>
-            <Button leftIcon={<TbMoneybag />} variant='solid' colorScheme='blue' onClick={() => wertWidget.mount()}>Add Funds</Button>
+            <Button leftIcon={<TbMoneybag />} variant='solid' colorScheme='blue' onClick={() => wertWidget.open()}>Add Funds</Button>
         </>
     )
 }

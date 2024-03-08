@@ -10,23 +10,16 @@ import {
     ModalContent, 
     ModalCloseButton, 
     ModalFooter,
-    useToast,
     Text,
-    useColorModeValue,
 } from "@chakra-ui/react";
-import { useAddress, Web3Button, useContract, useNFT } from "@thirdweb-dev/react";
-import { utils } from "ethers";
-import { CrossmintPayButton } from '@crossmint/client-sdk-react-ui';
-import { CREATIVE_ADDRESS, LOCK_ADDRESS_MUMBAI_TESTNET } from "utils/config";
+import { useContract, useNFT } from "@thirdweb-dev/react";
+import { LOCK_ADDRESS_MUMBAI_TESTNET } from "utils/config";
 import Unlock from "utils/fetchers/Unlock.json";
 import WertPurchaseNFT from "./WertPurchaseNFT";
 
 
 function PurchaseKey() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const address = useAddress() || ""
-  const toast = useToast()
-  const connector = useColorModeValue("light", "dark")
 
   // Connect to your NFT contract
   const { contract } = useContract( 

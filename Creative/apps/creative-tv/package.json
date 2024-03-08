@@ -10,6 +10,7 @@
     "lint": "tsc"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.6",
     "@chakra-ui/counter": "^2.1.0",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
@@ -21,6 +22,7 @@
     "@next/font": "13.1.1",
     "@orbisclub/components": "^0.2.5",
     "@orbisclub/orbis-sdk": "^0.4.66",
+    "@snapshot-labs/snapshot.js": "^0.11.8",
     "@superfluid-finance/sdk-core": "^0.6.12",
     "@thirdweb-dev/auth": "^4.1.18",
     "@thirdweb-dev/chains": "^0.1.61",

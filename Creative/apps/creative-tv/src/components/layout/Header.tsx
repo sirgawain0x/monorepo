@@ -548,7 +548,7 @@ export function Header({ className, handleLoading }: Props) {
                 fontWeight={700}
                 _hover={{ color: cl }}
                 _focus={{ boxShadow: 'none' }}
-                onClick={() => router.push('https://vote.creativeplatform.xyz')}>
+                onClick={() => router.push('/vote')}>
                 Vote
               </Button>
               <Center height="50px">

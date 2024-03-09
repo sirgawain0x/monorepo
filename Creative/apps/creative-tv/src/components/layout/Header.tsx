@@ -39,12 +39,10 @@ import {
   chakra,
   useColorModeValue,
   useDisclosure,
-  useToast,
   MenuGroup,
 } from '@chakra-ui/react'
 import Unlock from '../../utils/fetchers/Unlock.json'
 import { ConnectWallet, useAddress, useUser, useWallet, useSDK } from '@thirdweb-dev/react'
-import { Mumbai } from '@thirdweb-dev/chains'
 import { useScroll } from 'framer-motion'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -350,9 +348,9 @@ export function Header({ className, handleLoading }: Props) {
               _focus={{ boxShadow: 'none' }}
               onClick={() => {
                 mobileNav.onClose()
-                router.push('/events')
+                router.push('/vote')
               }}>
-              Events
+              Vote
             </Button>
           </chakra.p>
           <p>

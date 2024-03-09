@@ -1,17 +1,3 @@
-/**
- * Component for claiming POAP (Proof of Attendance Protocol) tokens.
- * 
- * @component
- * @example
- * // Usage
- * <ClaimPoap address="0x1234567890" proposalId="abc123" snapshot="xyz789" />
- * 
- * @param {string} address - The address of the user claiming the POAP token.
- * @param {string} proposalId - The ID of the proposal associated with the POAP token.
- * @param {string} snapshot - The snapshot ID associated with the POAP token.
- * 
- * @returns {JSX.Element} The ClaimPoap component.
- */
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
 import Image from 'next/image';
@@ -38,6 +24,21 @@ interface Props {
 // Utility function for API URL construction
 const constructApiUrl = (path: string) => `${API_BASE_URL}/${path}`;
 
+
+/**
+ * Component for claiming POAP (Proof of Attendance Protocol) tokens.
+ * 
+ * @component
+ * @example
+ * // Usage
+ * <ClaimPoap address="0x1234567890" proposalId="abc123" snapshot="xyz789" />
+ * 
+ * @param {string} address - The address of the user claiming the POAP token.
+ * @param {string} proposalId - The ID of the proposal associated with the POAP token.
+ * @param {string} snapshot - The snapshot ID associated with the POAP token.
+ * 
+ * @returns {JSX.Element} The ClaimPoap component.
+ */
 const ClaimPoap = ({ address, proposalId, snapshot }: Props) => {
   const [poapImg, setPoapImg] = useState<string>('');
   const [currentState, setCurrentState] = useState<State>(NO_POAP);

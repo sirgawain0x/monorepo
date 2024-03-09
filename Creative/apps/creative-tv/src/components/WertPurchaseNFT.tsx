@@ -1,5 +1,4 @@
 import React from 'react';
-import type { NextPage } from 'next';
 import { signSmartContractData } from '@wert-io/widget-sc-signer';
 import WertWidget from '@wert-io/widget-initializer';
 import type { Options } from '@wert-io/widget-initializer/types';
@@ -12,7 +11,7 @@ import { encodeFunctionData } from 'viem';
 
 import Unlock from '../utils/fetchers/Unlock.json'
 
-const WertPurchaseNFT: NextPage = () => {
+const WertPurchaseNFT = () => {
     const address = useAddress() || '';
 
     if (address){

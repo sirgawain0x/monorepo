@@ -39,6 +39,7 @@ const WertPurchaseNFT = () => {
             origin: "https://sandbox.wert.io",
             color_buttons: "#EC407A",
             lang: 'en',
+            skip_init_navigation: false,
         }
 
         const nftOptions = {

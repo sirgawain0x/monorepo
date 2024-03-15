@@ -52,8 +52,7 @@ import { RiVideoUploadFill } from 'react-icons/ri'
 import { SITE_LOGO, SITE_NAME } from '../../utils/config'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AddFunds from 'components/AddFunds'
-import PurchaseKey from 'components/PurchaseKey'
-
+import WertPurchaseNFT from "components/WertPurchaseNFT"
 
 interface Props {
   className?: string
@@ -407,17 +406,11 @@ export function Header({ className, handleLoading }: Props) {
                 </MenuButton>
                 {!subscribed ? (
                   <MenuList>
-                    <MenuGroup title='1. Wallet Options'>
+                    <MenuGroup title='⛔️ Creator Access Only ⛔️'>
                         <Center>
-                          <AddFunds />
+                          <WertPurchaseNFT />
                         </Center>
-                    </MenuGroup>
-                    <MenuDivider />
-                    <MenuGroup title='2. Creator Access'>
-                      <Center>
-                        <PurchaseKey />
-                      </Center>
-                    </MenuGroup>
+                      </MenuGroup>
                   </MenuList>
                 ) : (
                   <MenuList>
@@ -607,9 +600,9 @@ export function Header({ className, handleLoading }: Props) {
                 </MenuButton>                
                   {!subscribed ? (
                     <MenuList>
-                      <MenuGroup title='⛔️ Creator Access Only'>
+                      <MenuGroup title='⛔️ Creator Access Only ⛔️'>
                         <Center>
-                          <PurchaseKey />
+                          <WertPurchaseNFT />
                         </Center>
                       </MenuGroup>
                     </MenuList>

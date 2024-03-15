@@ -1,3 +1,4 @@
+import React from "react";
 import { 
     useDisclosure, 
     Button,
@@ -37,7 +38,11 @@ function PurchaseKey() {
     <>
       <Button onClick={onOpen}>Get Access</Button>
       {/* MODAL */}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        lockFocusAcrossFrames={false} 
+        isOpen={isOpen} 
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader textAlign={'center'}>Claim the {`${nft?.metadata?.name}`}</ModalHeader>
@@ -50,7 +55,7 @@ function PurchaseKey() {
           </ModalBody>
 
           <ModalFooter>
-              <WertPurchaseNFT />
+              <WertPurchaseNFT/>
           </ModalFooter>
         </ModalContent>
       </Modal>

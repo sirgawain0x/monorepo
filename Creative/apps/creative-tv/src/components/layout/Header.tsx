@@ -305,7 +305,7 @@ export function Header({ className, handleLoading }: Props) {
                       Exclusive
                     </Box>
                     <Heading size='md' my='2'>
-                      <LinkOverlay as={NextLink} href='https://kidz.creativeplatform.xyz' target='_blank'>
+                      <LinkOverlay as={NextLink} href='#'>
                         New Year, New Beginnings: Creative Kidz
                       </LinkOverlay>
                     </Heading>

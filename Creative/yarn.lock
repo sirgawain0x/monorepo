@@ -9877,17 +9877,18 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wert-io/widget-initializer@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@wert-io/widget-initializer/-/widget-initializer-5.2.0.tgz#20598d189b59618774cc9069c5ffb270454c1485"
-  integrity sha512-Rs9XLeFtvWtZGg9kOVvMZ+PpRxFconMFox6fGQO9psET1B29bBNO6sifOeNzxQ5pMVVbLiK2ZQD5w194sqrB3A==
+"@wert-io/widget-initializer@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@wert-io/widget-initializer/-/widget-initializer-6.1.0.tgz#c6b82bdd297c30cacd357097958dee9733c0b1b1"
+  integrity sha512-itC9nAsX6AOWeWmmfZiaD1k3pFpinzIo9Fpl9YxcbRcebs/ViHMmo0W3XGm+kCSaNsno2VWddGlG95KX6fG+LA==
 
-"@wert-io/widget-sc-signer@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@wert-io/widget-sc-signer/-/widget-sc-signer-2.0.0.tgz"
-  integrity sha512-8BMZOnvGKj+LwIlmNqJyKFLn0VCMudURV81dUb0CyGGy8XJwBqAtNPj81iPIw07xx+a61hpgd8ngWQi6i3CwUQ==
+"@wert-io/widget-sc-signer@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@wert-io/widget-sc-signer/-/widget-sc-signer-2.0.1.tgz#c60e06a816b42ebcaf008f445e5a832d2bdf7694"
+  integrity sha512-Oy8tAS1b0yuTpDvO/2WmNLPo4aWXcBGeX9NjQ5CWNRsVaV3HMkrZAeHnQihX2RhVemJNfUtmkHQCVzaYEoXxPw==
   dependencies:
     "@types/elliptic" "^6.4.12"
+    buffer "^6.0.3"
     elliptic "^6.5.4"
 
 "@wry/caches@^1.0.0":

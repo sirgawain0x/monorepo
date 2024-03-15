@@ -53,7 +53,6 @@ export default function Footer(props: Props): JSX.Element {
             <Link href={SOCIAL_LINKS.email} target={'_blank'}>
               Contact Us
             </Link>
-            <Link href={'#'}>Partners</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Legal</ListHeader>

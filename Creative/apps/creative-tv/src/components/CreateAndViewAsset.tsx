@@ -22,6 +22,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import PreviewVideo from './PreviewVideo'
 
 export interface AssetData {
   title: string
@@ -38,6 +39,10 @@ export interface AssetData {
 export interface MintDetail {
   nFTAmountToMint: number
   pricePerNFT: number
+}
+
+export interface PreviewVideoProps {
+  video: File | null;
 }
 
 // Add MintDetails to AssetData
@@ -153,6 +158,13 @@ const CreateAndViewAsset = () => {
     }
   }, [progress])
 
+  const renderVideoPreview = useMemo(() => {
+    if (video) {
+      return <PreviewVideo video={video} />
+    }
+    return null;
+  }, [video])
+
   const {
     handleSubmit,
     control,
@@ -161,7 +173,7 @@ const CreateAndViewAsset = () => {
 
   const isError = assetName === '' || description === '' // Note: The `isError` variable checks if the asset name and description are empty and determines if an error should be displayed.
 
-  const handleAssetUpload: SubmitHandler<AssetData> = (data) => {
+  const handleAssetUpload: SubmitHandler<AssetData> = (data, event) => {
     if (isError) {
       return
     }
@@ -171,8 +183,8 @@ const CreateAndViewAsset = () => {
       title: data.title,
       description: data.description,
     }))
-
-    createAsset && createAsset()
+    event?.preventDefault();
+    createAsset && createAsset();
   }
 
   const { handleSubmit: handleMintSubmit, control: handleMintControl, formState: mintFormState } = useForm<MintDetail>()
@@ -213,9 +225,7 @@ const CreateAndViewAsset = () => {
             Video Preview:
           </Text>
           <Flex minWidth='max-content' alignItems='center'>
-            {video && (
-              <video src={URL.createObjectURL(video)} controls style={{ maxWidth: '1000px', maxHeight:'400px', marginTop: '8px' }} />
-            )}
+            {video && renderVideoPreview }
           </Flex>
         </Box>
       )}

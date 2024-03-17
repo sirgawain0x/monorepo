@@ -165,6 +165,38 @@ const CreateAndViewAsset = () => {
     return null;
   }, [video])
 
+  const renderLivepeerVideo = useMemo(() => {
+    if (createdAsset && assetData) {
+      return <Player 
+      playbackId={assetData.properties.playbackId} 
+      title={createdAsset[0].name} 
+      autoUrlUpload={{ fallback: true, ipfsGateway: 'https://w3s.link' }}
+      showUploadingIndicator={true}
+      controls={{
+      autohide: 3000,
+      hotkeys: true
+      }}
+      theme={{
+      borderStyles: {
+          containerBorderStyle: 'solid',
+      },
+      colors: {
+          accent: '#EC407A',
+      },
+      space: {
+          controlsBottomMarginX: '10px',
+          controlsBottomMarginY: '5px',
+          controlsTopMarginX: '15px',
+          controlsTopMarginY: '10px',
+      },
+      radii: {
+          containerBorderRadius: '0px',
+      },
+      }}/>
+    }
+    return null;
+  }, [assetData])
+
   const {
     handleSubmit,
     control,
@@ -225,98 +257,94 @@ const CreateAndViewAsset = () => {
             Video Preview:
           </Text>
           <Flex minWidth='max-content' alignItems='center'>
-            {video && renderVideoPreview }
+            {video && !createdAsset && renderVideoPreview }
           </Flex>
         </Box>
-      )}
-          {/* The preview of uploaded video */}
-          {createdAsset && createdAsset.length > 0 && 
-            <Player title={createdAsset[0].name} playbackId={createdAsset[0].playbackId} />
-          }     
-          {/* Form for asset name and description */}
-          <Box my={12} maxWidth={400} mx={'auto'}>
-            {!createdAsset?.[0]?.id && (
-              /* "handleSubmit" will validate form inputs before invoking "onSubmit" */
-              <form onSubmit={handleSubmit(handleAssetUpload)}>
-                <FormControl id="assetData" mb={8}>
-                  <FormLabel>Episode Title</FormLabel>
-                  <Controller
-                    name="title"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <Input
-                        size={'lg'}
-                        onChange={(e) => {
-                          setAssetName(e.target.value as any)
-                          field.onChange(e)
-                        }}
-                        value={field.value}
-                        mb={formErrors.title ? 0 : 4}
-                        disabled={createAssetStatus === 'loading'}
-                        placeholder="Enter the name of the video"
-                        aria-invalid={formErrors.title ? 'true' : 'false'}
-                      />
-                    )}
+      )}    
+      {/* Form for asset name and description */}
+      <Box my={12} maxWidth={400} mx={'auto'}>
+        {!createdAsset?.[0]?.id && video && (
+          /* "handleSubmit" will validate form inputs before invoking "onSubmit" */
+          <form onSubmit={handleSubmit(handleAssetUpload)}>
+            <FormControl id="assetData" mb={8}>
+              <FormLabel>Episode Title</FormLabel>
+              <Controller
+                name="title"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Input
+                    size={'lg'}
+                    onChange={(e) => {
+                      setAssetName(e.target.value as any)
+                      field.onChange(e)
+                    }}
+                    value={field.value}
+                    mb={formErrors.title ? 0 : 4}
+                    disabled={createAssetStatus === 'loading'}
+                    placeholder="Enter the name of the video"
+                    aria-invalid={formErrors.title ? 'true' : 'false'}
                   />
-                  {formErrors.title && formErrors.title.type === 'required' && (
-                    <FormHelperText mb="32px">Enter the episode title you'd like to use for this video.</FormHelperText>
-                  )}
-
-                  <FormLabel mt={4}>Description</FormLabel>
-                  <Controller
-                    name="description"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <Textarea
-                        onChange={(e) => {
-                          setDescription(e.target.value as any)
-                          field.onChange(e)
-                        }}
-                        value={field.value}
-                        disabled={createAssetStatus === 'loading'}
-                        mb={formErrors.description ? 0 : 4}
-                        placeholder="Enter a description for the episode video"
-                      />
-                    )}
-                  />
-                  {formErrors.description && formErrors.description.type == 'required' && (
-                    <FormHelperText mb={4}>Enter the episode description you'd like to use for this video.</FormHelperText>
-                  )}
-                </FormControl>
-
-                {createAssetError?.message ? (
-                  <Box className="processing-video" my={8}>
-                    <Alert status="error">
-                      <AlertIcon />
-                      <AlertDescription ml={2}>{createAssetError.message}!</AlertDescription>
-                    </Alert>
-                  </Box>
-                ) : (
-                  progressFormatted && (
-                    <Box className="processing-video" my={12}>
-                      {progressFormatted}
-                    </Box>
-                  )
                 )}
-                <Button
-                  type="submit"
-                  className="upload-button"
-                  style={{ backgroundColor: progress?.[0]?.phase === 'uploading' || progress?.[0]?.phase === 'processing' ? '#8e2649' : '#EC407A' }}
-                  _hover={{
-                    color: 'gray.800',
-                    transform: isError && 'scale(1.015)',
-                    cursor: progress?.[0]?.phase === 'processing' ? 'progress' : 'pointer',
-                  }}
-                  disabled={createAssetStatus === 'loading' || !createAsset || progress?.[0]?.phase === 'processing'}
-                  mb={20}>
-                  Upload Video
-                </Button>
-              </form>
+              />
+              {formErrors.title && formErrors.title.type === 'required' && (
+                <FormHelperText mb="32px">Enter the episode title you'd like to use for this video.</FormHelperText>
+              )}
+
+              <FormLabel mt={4}>Description</FormLabel>
+              <Controller
+                name="description"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Textarea
+                    onChange={(e) => {
+                      setDescription(e.target.value as any)
+                      field.onChange(e)
+                    }}
+                    value={field.value}
+                    disabled={createAssetStatus === 'loading'}
+                    mb={formErrors.description ? 0 : 4}
+                    placeholder="Enter a description for the episode video"
+                  />
+                )}
+              />
+              {formErrors.description && formErrors.description.type == 'required' && (
+                <FormHelperText mb={4}>Enter the episode description you'd like to use for this video.</FormHelperText>
+              )}
+            </FormControl>
+
+            {createAssetError?.message ? (
+              <Box className="processing-video" my={8}>
+                <Alert status="error">
+                  <AlertIcon />
+                  <AlertDescription ml={2}>{createAssetError.message}!</AlertDescription>
+                </Alert>
+              </Box>
+            ) : (
+              progressFormatted && (
+                <Box className="processing-video" my={12}>
+                  {progressFormatted}
+                </Box>
+              )
             )}
-          </Box>
-      {createdAsset?.[0]?.playbackId && (
+            <Button
+              type="submit"
+              className="upload-button"
+              style={{ backgroundColor: progress?.[0]?.phase === 'uploading' || progress?.[0]?.phase === 'processing' ? '#8e2649' : '#EC407A' }}
+              _hover={{
+                color: 'gray.800',
+                transform: isError && 'scale(1.015)',
+                cursor: progress?.[0]?.phase === 'processing' ? 'progress' : 'pointer',
+              }}
+              disabled={createAssetStatus === 'loading' || !createAsset || progress?.[0]?.phase === 'processing'}
+              mb={20}>
+              Upload Video
+            </Button>
+          </form>
+        )}
+      </Box>
+      {createdAsset && (
         <>
           <div style={{ marginBottom: '32px' }}>
             <Player 
@@ -344,22 +372,20 @@ const CreateAndViewAsset = () => {
             radii: {
                 containerBorderRadius: '0px',
             },
-            }} 
-            />
+            }}
+          />
           </div>
 
           <Stack spacing="20px" my={12} style={{ border: '1px solid whitesmoke', padding: 24 }}>
-            <Text as={'h3'} style={{ fontWeight: '600', fontSize: 24, marginBottom: 24 }}>
-              Asset uploaded successfully.
-            </Text>
-
-            <Text style={{ fontWeight: '500' }}>Asset Details is as follows:</Text>
-            <Box style={{ color: 'whitesmoke', lineHeight: 1.75 }}>
-              <Text>Asset Name: {createdAsset?.[0]?.name}</Text>
-              <Text>Playback URL: {createdAsset?.[0]?.playbackUrl}</Text>
-              <Text>IPFS CID: {createdAsset?.[0]?.storage?.ipfs?.cid ?? 'None'}</Text>
+            <Text as={'h3'} style={{ fontWeight: '600', fontSize: 24, marginBottom: 24 }}>Video Uploaded Successfully 🎉</Text>
+            <Text style={{ fontWeight: '500' }}>Asset Details:</Text>
+            <Box style={{ lineHeight: 1.75 }}>
+              <Text><strong>Asset Name:</strong> {createdAsset?.[0]?.name}</Text>
+              <Text><strong>Playback URL:</strong> {createdAsset?.[0]?.playbackUrl}</Text>
+              <Text><strong>IPFS CID:</strong> {createdAsset?.[0]?.storage?.ipfs?.cid ?? 'None'}</Text>
             </Box>
           </Stack>
+          +
           <Box className="Proceed-button">
             <Box my={12} maxWidth={400} mx={'auto'}>
               <form onSubmit={handleMintSubmit(handleAssetMint)}>
@@ -380,7 +406,7 @@ const CreateAndViewAsset = () => {
                         value={field.value}
                         mb={formErrors.nFTAmountToMint ? 0 : 4}
                         disabled={mintFormState.isLoading}
-                        placeholder="Enter number of nft(s) to mint"
+                        placeholder="Enter number of nft(s) to mint (max 100)"
                         aria-invalid={formErrors.nFTAmountToMint ? 'true' : 'false'}
                       />
                     )}
@@ -410,7 +436,7 @@ const CreateAndViewAsset = () => {
                         value={field.value}
                         mb={mintFormState.errors.pricePerNFT ? 0 : 4}
                         disabled={mintFormState.isLoading}
-                        placeholder="Enter price per NFT"
+                        placeholder="5.10"
                         aria-invalid={formErrors.nFTAmountToMint ? 'true' : 'false'}
                       />
                     )}
